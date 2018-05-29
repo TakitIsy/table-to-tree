@@ -45,8 +45,13 @@ function tableToTree(table_Selector, tr_OpenedClass, tr_VisibleClass, tr_ToggleB
 
   // Use the buttons added by the function above
   table.addEventListener("click", function(e) {
+    
+    // Event management
     if (!e) return;
     if (e.target.outerHTML !== tr_ToggleButton) return;
+    e.preventDefault();
+    
+    // Get the parent tr and its level
     var row = e.target.closest("tr");
     row.classList.toggle(tr_OpenedClass);
     var lvl = +(row.getAttribute("level"));
