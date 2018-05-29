@@ -24,6 +24,48 @@
     </tr>
   </tbody>
 </table>
-<script>
+<style>
+  /* Example of styling */
+tbody tr {
+  display: none;
+}
 
+tr[level="0"],
+tr.visible {
+  display: table-row;
+}
+
+td {
+  background: #ccc;
+  padding: 4px 8px 4px 32px;
+  text-align: left;
+}
+
+tr[level="1"] td {
+  background: #ddd;
+  padding-left: 40px;
+}
+
+tr[level="2"] td {
+  background: #eee;
+  padding-left: 48px;
+}
+
+tr .toggle {
+  position: absolute;
+  left: 16px;
+  cursor: pointer;
+}
+
+.toggle::after {
+  content: "[+]";
+}
+
+.opened .toggle::after {
+  content: "[‒]";
+}
+</style>
+
+<script>
+  tableToTree('#myTable', 'opened', 'visible', '<span class="toggle"></span>');
 </script>
